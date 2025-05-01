@@ -16,7 +16,71 @@
         <p class="text-md">Entrez vos information de reservation</p> 
     </div>
     <div class="row">
-        <div class="col col-md-4 offset-md-1" style="background-color: blue;"><p>aaaa</p></div>
+        <div class="col col-md-4 pb-3 offset-md-1" style="background-color: blue;">
+            <form méthod="post" action="">
+                <label value="lieu">lieu du séjour</label>
+                <input type="text" class="form-control" id="lieu" placeholder="lieu du séjour" required>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="date_depart">Date de départ</label>
+                        <input type="date" class="form-control" id="date_depart" placeholder="Date de séjour" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="date_retour">Date de retour</label>
+                        <input type="date" class="form-control" id="date_retour" placeholder="Date de retour" required>
+                    </div>
+                </div>
+                <div class="row text-center pt-2">
+                    <div class="col-md-3 pt-2" >
+                        <label for="adult">adult</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="adult" class="form-control" type="number" value="0" disabled readonly>                    
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" style="background-color:white; color: black;" type="button" id="adult_plus">+</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" style="background-color:white; color: black;" type="button" id="adult_moin">-</button>
+                    </div>
+                </div>
+                <div class="row text-center pt-2">
+                    <div class="col-md-3 pt-2" >
+                        <label for="enfant">enfant</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="enfant" class="form-control" type="number" value="0" disabled readonly>                    
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" style="background-color:white; color: black;" type="button" id="enfant_plus">+</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" style="background-color:white; color: black;" type="button" id="enfant_moin">-</button>
+                    </div>
+
+                </div>
+                <div class="row text-center pt-2">
+                    <div class="col-md-3 pt-2" >
+                        <label for="chambre">chambre</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="chambre" class="form-control" type="number" value="0" disabled readonly>                    
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" style="background-color:white; color: black;" type="button" id="chambre_plus">+</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" style="background-color:white; color: black;" type="button" id="chambre_moin">-</button>
+                    </div>
+                </div>
+                <button class="btn btn-primary mt-3" style="background-color:white; color: black; width: 100%;" type="submit" id="rechercher">rechercher</button>
+                <button class="btn btn-primary mt-3" style="background-color:white; color: black; width: 100%;" type="reset" id="reset">effacer</button>
+                <div class="form-check form-switch pt-3">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">je voyage pour le tavail</label>
+                  </div>
+            </form>
+        </div>
         <div class="col col-md-4 offset-md-2" style="background-color: red;"><p>aaaa</p></div>
     </div>
 </body>
