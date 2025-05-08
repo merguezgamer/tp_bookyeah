@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col col-md-4 pb-3 offset-md-1" style="background-color: blue;">
             <form method="post" action="/javascript/js.js" name="formulaire" id="formulaire">
-                <label for="lieu">Lieu du séjour</label>
+                <label for="destination">Lieu du séjour</label>
                 <input type="text" class="form-control" id="destination" placeholder="Lieu du séjour" required>
                 <div class="row">
                     <div class="col-md-6">
@@ -61,7 +61,7 @@
                         <label for="chambre">Chambre</label>
                     </div>
                     <div class="col-md-3">
-                        <input id="chambre" class="form-control" type="number" value="0" disabled readonly>
+                        <input id="chambre" class="form-control" type="number" value="0" disabled >
                     </div>
                     <div class="col-md-3">
                         <button class="btn btn-primary" style="background-color:white; color: black;" type="button" id="chambre_plus">+</button>
@@ -70,7 +70,7 @@
                         <button class="btn btn-primary" style="background-color:white; color: black;" type="button" id="chambre_moin">-</button>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3" style="background-color:white; color: black; width: 100%;" type="button" id="rechercher" onclick="validation()">Rechercher</button>
+                <button class="btn btn-primary mt-3" style="background-color:white; color: black; width: 100%;" type="button" id="rechercher" onclick="validation(), calculer()">Rechercher</button>
                 <button class="btn btn-primary mt-3" style="background-color:white; color: black; width: 100%;" type="reset" id="reset">Effacer</button>
                 <div class="form-check form-switch pt-3">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
