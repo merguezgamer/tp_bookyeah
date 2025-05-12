@@ -1,3 +1,5 @@
+
+// Fonction pour valider le formulaire
 function validation() {
     var destination = document.forms["formulaire"]["destination"].value;
     var date_depart = document.forms["formulaire"]["date_depart"].value;
@@ -5,6 +7,7 @@ function validation() {
     var adult = document.forms["formulaire"]["adult"].value;
     var enfant = document.forms["formulaire"]["enfant"].value;
     var chambre = document.forms["formulaire"]["chambre"].value;
+    // Vérification des champs vides
     if (destination == "") {
         alert("Veuillez entrer une destination.");
         return false;
@@ -17,6 +20,7 @@ function validation() {
         alert("Veuillez entrer une date depart.");
         return false;
     }
+    // Vérification des champs date 
     if (date_depart > date_retour && date_depart != "" && date_retour != "") {
         alert("La date de départ ne peut pas être supérieure à la date de retour.");
         return false;
@@ -26,6 +30,7 @@ function validation() {
         alert("le voyage ne peut pas etre inférieur a 1 jour.");
         return false;
     }
+    // Vérification des champs nombre d'adultes, enfants et chambres
     if (adult == "0") {
         alert("Le nombre d'adult ne peut etre 0.");
         return false;
@@ -40,7 +45,7 @@ function validation() {
     }
     return true;
 }
-
+// Fonction pour pour ajouter ou retirer des adultes
 document.addEventListener("DOMContentLoaded", function() {
     // Gestionnaire pour le bouton "+" pour les adultes
     document.getElementById("adult_plus").addEventListener("click", function() {
@@ -56,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Gestionnaire pour le bouton "+" pour les enfants
+    // fonction pour ajouter ou retirer des enfants en inserant du code html dans une div vide 
     document.getElementById("enfant_plus").addEventListener("click", function() {
         var enfantInput = document.getElementById("enfant");
         enfantInput.value = parseInt(enfantInput.value) + 1;
@@ -65,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
             h2.insertAdjacentHTML("afterend", html);
     });
 
-    // Gestionnaire pour le bouton "-" pour les enfants
+    // fonction pour retirer un enfant en supprimant le code html de la div
     document.getElementById("enfant_moin").addEventListener("click", function() {
         var enfantInput = document.getElementById("enfant");
         if (parseInt(enfantInput.value) > 0) {
@@ -107,7 +112,12 @@ function calculer() {
     var prix_enfant = 500;
     var prix_chambre = 2000;
 
+    // Calculer le montant total
     var total = (adult * prix_adult) + (enfant * prix_enfant) + (chambre * prix_chambre);
-    alert("Le montant total est de " + total + " euros.");
+    alert("Le montant total est de " + parseInt(total) + " euros.");
     }
+}
+
+function reload() {
+    location.reload();
 }
