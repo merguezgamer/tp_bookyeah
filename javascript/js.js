@@ -1,12 +1,12 @@
 
 // Fonction pour valider le formulaire
 function validation() {
-    var destination = document.forms["formulaire"]["destination"].value;
-    var date_depart = document.forms["formulaire"]["date_depart"].value;
-    var date_retour = document.forms["formulaire"]["date_retour"].value;
-    var adult = document.forms["formulaire"]["adult"].value;
-    var enfant = document.forms["formulaire"]["enfant"].value;
-    var chambre = document.forms["formulaire"]["chambre"].value;
+    let destination = document.forms["formulaire"]["destination"].value;
+    let date_depart = document.forms["formulaire"]["date_depart"].value;
+    let date_retour = document.forms["formulaire"]["date_retour"].value;
+    let adult = document.forms["formulaire"]["adult"].value;
+    let enfant = document.forms["formulaire"]["enfant"].value;
+    let chambre = document.forms["formulaire"]["chambre"].value;
     // Vérification des champs vides
     if (destination == "") {
         alert("Veuillez entrer une destination.");
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Gestionnaire pour le bouton "+" pour les adultes
     document.getElementById("adult_plus").addEventListener("click", function() {
         var adultInput = document.getElementById("adult");
-        adult.value = parseInt(adultInput.value) + 1;
+        adultInput.value = parseInt(adultInput.value) + 1;
     });
 
     // Gestionnaire pour le bouton "-" pour les adultes
@@ -66,7 +66,10 @@ document.addEventListener("DOMContentLoaded", function() {
         var enfantInput = document.getElementById("enfant");
         enfantInput.value = parseInt(enfantInput.value) + 1;
             const h2 = document.getElementById("div_enfant");
-            let html = "<div id='enfant_retirer'><br><label for='enfant_age'>enfant</label><input class='form-control' type='number' placeholder='entrer age'id='enfant_age' max='17' min='0'></input></div>";
+            let html = `<div id='enfant_retirer'><br>
+                        <label for='enfant_age'>enfant(2 à 17ans)</label>
+                        <input class='form-control' type='number' placeholder='entrer age entre 2 et 17ans'id='enfant_age' max='17' min='2'>
+                        </input></div>`;
             h2.insertAdjacentHTML("afterend", html);
     });
 
@@ -96,25 +99,69 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function calculer() {
+    let destination = document.forms["formulaire"]["destination"].value;
+    let date_depart = document.forms["formulaire"]["date_depart"].value;
+    let date_retour = document.forms["formulaire"]["date_retour"].value;
+    let adult = document.forms["formulaire"]["adult"].value;
+    let enfant = document.forms["formulaire"]["enfant"].value;
+    let chambre = document.forms["formulaire"]["chambre"].value;
+    if (enfant > 0) {
+        var age = document.forms["formulaire"]["enfant_age"].value;
+    }
     if (validation() == true ){
     // Calculer le montant total;
-    var adult = document.forms["formulaire"]["adult"].value;
-    for (var i = 0; i < enfant; i++) {
-        var age = document.forms["formulaire"]["enfant_age"].value;
-        if (age < 2) {
-            alert("L'enfant doit avoir au moins 2 ans.");
-            return false;
-        }
-    }
 
-    var chambre = document.forms["formulaire"]["chambre"].value;
     var prix_adult = 1000;
     var prix_enfant = 500;
     var prix_chambre = 2000;
-
+    var travail =document.forms["formulaire"]["travail"].value;
+    console.log(travail);
+        if (travail == 'oui') {
+            var prix_adult = 800;
+            var prix_enfant = 400;
+            var prix_chambre = 1500;
+        }
+        else {
+            var travail = "Non";
+        }
     // Calculer le montant total
     var total = (adult * prix_adult) + (enfant * prix_enfant) + (chambre * prix_chambre);
-    alert("Le montant total est de " + parseInt(total) + " euros.");
+   
+    const tableBody = document.querySelector("#reservationTable tbody");
+    tableBody.innerHTML = `
+        <tr>
+            <td>Destination</td>
+            <td>${destination}</td>
+        </tr>
+        <tr>
+            <td>Date de départ</td>
+            <td>${date_depart}</td>
+        </tr>
+        <tr>
+            <td>Date de retour</td>
+            <td>${date_retour}</td>
+        </tr>
+        <tr>
+            <td>Nombre d'adultes</td>
+            <td>${adult}</td>
+        </tr>
+        <tr>
+            <td>Nombre d'enfants</td>
+            <td>${enfant}</td>
+        </tr>
+        <tr>
+            <td>Nombre de chambres</td>
+            <td>${chambre}</td>
+        </tr>
+        <tr>
+            <td>travail</td>
+            <td>${travail}</td>
+        </tr>
+        <tr>
+            <td>Montant total</td>
+            <td>${total} €</td>
+        </tr>
+    `;
     }
 }
 
